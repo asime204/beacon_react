@@ -1,76 +1,88 @@
-import React, { useEffect, useState } from 'react';
-// import Budget from './Budget';
+import React, { useEffect, useState, useRef } from 'react';
+import Chart from 'chart.js/auto';
 
-export default function Feed() {
-    // const { income, bills, leftOver } = Budget();
+export default function Feed(props) {
+    const { totalIncome, totalBills } = props;
+    const chartRef = useRef();
+    const [chartData, setChartData] = useState({});
+
+    useEffect(() => {
+        setChartData({
+            labels: ['Income', 'Bills'],
+            datasets: [
+                {
+                    label: 'Total Income vs Total Bills',
+                    data: [totalIncome, totalBills],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
+                    ],
+                    borderWidth: 1,
+                },
+            ],
+        });
+    }, [totalIncome, totalBills]);
+
+    useEffect(() => {
+        if (chartRef.current && chartData.datasets) {
+            const myChart = new Chart(chartRef.current, {
+                type: 'bar',
+                data: chartData,
+            });
+        }
+    }, [chartData, chartRef]);
+
 
     return (
-        <div className="bottom-section">
-            <div className="row row-cols-1 row-cols-md-2 g-4">
-                <div className="col">
-                    <div className="card border-0">
-                        <div className="mt-5"><i className="fa-solid fa-laptop fa-2xl"></i></div>
-                        <div className="card-body">
-                            <h5 className="card-title text-center">Calendar</h5>
-                            <p className="card-text text-center"></p>
-                            <div className="d-grid gap-2 col-6 mx-auto">
-                                <a className="btn btn-outline-light btn-lg text-dark border border-dark"
-                                    href="how_it_works.html" role="button">Learn More&nbsp;&nbsp;&nbsp;<i
-                                        className="fa-solid fa-greater-than"></i></a>
+        <>
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-6">
+                        <div className="card text-center">
+                            <div className="card-body">
+                                <i className="fa-solid fa-laptop fa-2x"></i>
+                                <h5 className="card-title">Calendar</h5>
+                                <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <a href="#" className="btn btn-primary">Learn More</a>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div className="col">
-                    <div className="card border-0">
-                        <div className="mt-5"><i className="fa-regular fa-square-check fa-2xl"></i></div>
-                        <div className="card-body">
-                            <h5 className="card-title">Budget</h5>
-                            {/* <p className="card-text"> */}
-                                {/* Total Income: {income}
-                            <br />
-                                Total Bills: {bills}
-                            <br />
-                                Left Over: {leftOver}</p> */}
-                            <div className="d-grid gap-2 col-6 mx-auto">
-                                <a className="btn btn-outline-light btn text-dark border border-dark"
-                                    href="/budget" role="button">Update</a>
+                    <div className="col-md-6">
+                        <div className="card text-center">
+                            <div className="card-body">
+                                <h5 className="card-title">Budget</h5>
+                                <canvas ref={chartRef}></canvas>
+                                <p className="card-text">Quick overview of your overall monthly income and deductions!</p>
+                                <a href="/budget" className="btn btn-primary">Update</a>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div className="col">
-                    <div className="card border-0">
-                        <div className="mt-5"><i className="fa-solid fa-chart-column fa-2xl"></i></div>
-                        <div className="card-body">
-                            <h5 className="card-title">Groups</h5>
-                            <p className="card-text"></p>
-                            <div className="d-grid gap-2 col-6 mx-auto">
-                                <a className="btn btn-outline-light btn-lg text-dark border border-dark"
-                                    href="how_it_works.html" role="button">Learn More&nbsp;&nbsp;&nbsp;<i
-                                        className="fa-solid fa-greater-than"></i></a>
+                    <div className="col-md-6">
+                        <div className="card text-center">
+                            <div className="card-body">
+                                <i className="fa-solid fa-chart-column fa-2x"></i>
+                                <h5 className="card-title">Groups</h5>
+                                <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <a href="#" className="btn btn-primary">Learn More</a>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div className="col">
-                    <div className="card border-0">
-                        <div className="mt-5"><i className="fa-regular fa-calendar-days fa-2xl"></i></div>
-                        <div className="card-body">
-                            <h5 className="card-title">Challenges</h5>
-                            <p className="card-text"></p>
-                            <div className="d-grid gap-2 col-6 mx-auto">
-                                <a className="btn btn-outline-light btn-lg text-dark border border-dark"
-                                    href="how_it_works.html" role="button">Learn More&nbsp;&nbsp;&nbsp;<i
-                                        className="fa-solid fa-greater-than"></i></a>
+                    <div className="col-md-6">
+                        <div className="card text-center">
+                            <div className="card-body">
+                                <i className="fa-regular fa-calendar-days fa-2x"></i>
+                                <h5 className="card-title">Challenges</h5>
+                                <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <a href="#" className="btn btn-primary">Learn More</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
