@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export default function Budget({ user }) {
     const [paychecks, setPaychecks] = useState([{ title: '', amount: '', trans_date: '' }]);
-    const [bills, setBills] = useState([{ title: '', amount: '', due_date: '' }]);
+    const [bills, setBills] = useState([{ title: '', amount: '', trans_date: '' }]);
     const [leftOver, setLeftOver] = useState('');
     console.log(user)
 
@@ -35,7 +35,7 @@ export default function Budget({ user }) {
         console.log('Success:', data);
         };
 
-        const removeFromBudgetAPI = async (paychecks, bills, user) => {
+        const removeFromBudgetAPI = async (paychecks, bills) => {
             const url = 'http://localhost:5000/api/budget/remove';
             const budgetData = {
               paychecks: paychecks[0] ? [paychecks[0]] : [],
@@ -79,7 +79,7 @@ export default function Budget({ user }) {
       };
       
     const handleAddBill = () => {
-        const newBill = { title: '', amount: '', due_date: '' };
+        const newBill = { title: '', amount: '', trans_date: '' };
         setBills([...bills, newBill]);
         console.log('Bill added:', bills);
       };
@@ -96,7 +96,7 @@ export default function Budget({ user }) {
         const updatedBills = [...bills];
         const removedBill = updatedBills.splice(index, 1)[0];
         setBills(updatedBills);
-        console.log('Bill removed:', updatedBills);
+        console.log('Bill removed:', removedBill);
         await removeFromBudgetAPI([], [removedBill], user);
       };
     
@@ -206,8 +206,8 @@ return (
                                 type="date"
                                 className="form-control"
                                 placeholder="Due Date"
-                                name="due_date"
-                                value={bill.due_date}
+                                name="trans_date"
+                                value={bill.trans_date}
                                 onChange={(e) => handleBillChange(index, e)}
                             />
                         </div>
