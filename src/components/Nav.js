@@ -19,11 +19,6 @@ export default class Nav extends Component {
                                 ?
                                 <>
                                     <Link className="nav-link" to="/feed">Feed</Link>
-                                    {/* <Link className="nav-link" to="/feed">Instagram</Link>
-                                    <Link className="nav-link" to="/todo">To Do List</Link>
-                                    <Link className="nav-link" to="/test">Functional Component Test</Link>
-                                    <Link className="nav-link" to="/shop">Shop</Link>
-                                    <Link className="nav-link" to="/posts/create"><AiOutlinePlus /></Link> */}
                                     <Link className="nav-link" to="/login" onClick={this.props.logMeOut}>Log Out</Link>
                                     <p className='nav-link'>{this.props.user.username}</p>
                                 </>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Chart from 'chart.js/auto';
+import Calendar from '../components/Calendar';
 
 export default function Feed(props) {
     const { totalIncome, totalBills } = props;
@@ -46,8 +47,7 @@ export default function Feed(props) {
                             <div className="card-body">
                                 <i className="fa-solid fa-laptop fa-2x"></i>
                                 <h5 className="card-title">Calendar</h5>
-                                <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                <a href="#" className="btn btn-primary">Learn More</a>
+                                <Calendar />
                             </div>
                         </div>
                     </div>

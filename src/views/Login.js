@@ -31,11 +31,13 @@ export default function Login({ logMeIn }) {
 
   return (
     <div className='body'>
-      <div><form onSubmit={handleSubmit}>
-        <input placeholder= "Username" name="username" />
-        <input placeholder= "Password" name="password" type="password" />
-        <button className="btn btn-success" type="submit">Log In</button>
-      </form></div>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input placeholder= "Username" name="username" />
+          <input placeholder= "Password" name="password" type="password" />
+          <button className="btn btn-success" type="submit">Log In</button>
+        </form>
+      </div>
       
 
       {loginError && <p>{loginError}</p>}

@@ -1,7 +1,11 @@
 import React from 'react';
 import '../css/main.css';
 
-function Home() {
+function Home(props) {
+    // const { createPopup } = props;
+
+    
+
     return (
         <div className='body'>
             <h1>Welcome to Beacon</h1>
@@ -11,6 +15,7 @@ function Home() {
                 <div className="card-body">
                     <button className="button"><a href="/signup">Create Account</a></button>
                     <button className="button"><a href="/login">Log In</a></button>
+                    {/* <button onClick={createPopup}>Log In with Google</button> */}
                 </div>
             </div>
         </div>

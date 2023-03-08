@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
-import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Routes, Route, BrowserRouter as Router, redirect } from 'react-router-dom';
 import Nav from './components/Nav';
 import Home from './views/Home';
 import SignUp from './views/Signup';
@@ -8,7 +8,7 @@ import Feed from './views/Feed';
 import Budget from './views/Budget';
 // import CreatePost from './views/CreatePost';
 // import UpdatePost from './views/UpdatePost';
-
+// import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 
 export default function App() {
@@ -24,20 +24,36 @@ export default function App() {
             setUser(user);
             localStorage.setItem('user107', JSON.stringify(user))
         };
-        const logMeOut = () => {
-            setUser({});
-            localStorage.removeItem('user107')
-        };
+    const logMeOut = () => {
+        setUser({});
+        localStorage.removeItem('user107')
+    };
 
-        const showMessage = () => {
-            return messages.map(m => <p>{m}</p>)
-        }
+    const showMessage = () => {
+        return messages.map(m => <p>{m}</p>)
+    }
 
     const [user, setUser] = useState(getUserFromLocalStorage());
     const [messages, setMessages] = useState([]);
     const [paychecks, setPaychecks] = useState([]);
     const [bills, setBills] = useState([]);
     const [leftOver, setLeftOver] = useState('');
+
+    // const createPopup = async () => {
+    //     const auth = getAuth();
+    //     const provider = new GoogleAuthProvider();
+    //     try {
+    //       const result = await signInWithPopup(auth, provider);
+    //       const credential = GoogleAuthProvider.credentialFromResult(result);
+    //       const google_id = credential.accessToken;
+    //       const user = result.user;
+    //       logMeIn(user);
+    //       redirect("/feed");
+          
+    //     } catch (error) {
+    //       console.error(error);
+    //     }
+    //   };
 
     const handleAddPaycheck = () => {
         const newPaycheck = { title: '', amount: '', trans_date: '' };
@@ -113,7 +129,7 @@ export default function App() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/budget' element={<Budget user={user} paychecks={paychecks} setPaychecks={setPaychecks} bills={bills} setBills={setBills} setLeftOver={setLeftOver} calculateLeftOver={calculateLeftOver} handleAddPaycheck={handleAddPaycheck} handleAddBill={handleAddBill}/>} />
-                    <Route path='/feed' element={<Feed totalIncome={totalIncome} totalBills={totalBills}/>} />
+                    <Route path='/feed' element={<Feed totalIncome={totalIncome} totalBills={totalBills} />} />
                     <Route path='/signup' element={<SignUp />} />
                     <Route path='/login' element={<Login logMeIn={logMeIn}/>} />
                     {/* <Route path='/posts/:postId' element={<SinglePost user={user}/>} />
