@@ -6,10 +6,11 @@ import JokeQuote from '../components/JokeQuote';
 
 
 export default function Feed(props) {
-    const { totalIncome, totalBills, paychecks, bills, animeQuote } = props;
+    const { totalIncome, totalBills, paychecks, bills } = props;
     const chartRef = useRef();
     const [chartData, setChartData] = useState({});
     let myChart = useRef();
+    Chart.defaults.color = '#FFFFFF';
 
     useEffect(() => {
         setChartData({
@@ -50,21 +51,18 @@ export default function Feed(props) {
             <div className="container">
                 <div className="row">
                     <div className="col-md-6 d-flex align-items-center pt-3 pb-3">
-                        <div className="text-center">
-                            <i className="fa-solid fa-laptop fa-2x"></i>
-                            <Calendar paychecks={paychecks} bills={bills}/>
+                        <div className="card text-center col-md-12">
+                            <div className="card-body">
+                                <Calendar paychecks={paychecks} bills={bills}/>
+                            </div>
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <div className="card text-center col-md-12">
+                        <div className="card text-center col-md-12" >
                             <div className="card-body">
                                 <h5 className="card-title">Budget</h5>
                                 <canvas ref={chartRef}></canvas>
-                                <ul className="list-group list-group-flush">
-                                    <li className="list-group-item">Total Income: {totalIncome}</li>
-                                    <li className="list-group-item">Total Bills: {totalBills}</li>
-                                </ul>
-                                <a href="/budget" className="btn btn-primary">Update</a>
+                                <a href="/budget" className="btn btn-primary" style={{borderColor: "white"}}>Update</a>
                             </div>
                         </div>
                     </div>

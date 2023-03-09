@@ -18,15 +18,15 @@ export default class Nav extends Component {
                                 this.props.user.apitoken
                                 ?
                                 <>
-                                    <Link className="nav-link" to="/feed">Feed</Link>
-                                    <Link className="nav-link" to="/login" onClick={this.props.logMeOut}>Log Out</Link>
-                                    <p className='nav-link'>{this.props.user.username}</p>
+                                    <Link className="nav-link" to="/feed" style={{color: 'white'}}>Feed</Link>
+                                    <Link className="nav-link" to="/login" onClick={this.props.logMeOut} style={{color: 'white'}}>Log Out</Link>
+                                    <p className='nav-link' style={{color: 'white'}}>{this.props.user.username}</p>
                                 </>
                                 :
                                 <>
-                                    <Link className="nav-link active" aria-current="page" to="/">Home</Link>
-                                    <Link className="nav-link" to="/login">Log In</Link>                                                        
-                                    <Link className="nav-link" to="/signup">Sign Up</Link>
+                                    <Link className="nav-link active" aria-current="page" to="/" style={{color: 'white'}}>Home</Link>
+                                    <Link className="nav-link" to="/login" style={{color: 'white'}}>Log In</Link>                                                        
+                                    <Link className="nav-link" to="/signup" style={{color: 'white'}}>Sign Up</Link>
                                 </>
                             }
                         </div>
