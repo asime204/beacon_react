@@ -100,40 +100,39 @@ export default function Budget(props) {
     return (
         <div className="budget-card">
             <div className="budget-card-body">
-                <h5 className="budget-card-title">Budget</h5>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group paychecks">
+                <div className="d-flex justify-content-between">
+                    <div className="form-group paychecks mr-2">
                         <label>Paychecks:</label>
                         {paychecks.map((paycheck, index) => (
-                            <div key={index} className="d-flex justify-content-between">
+                            <div key={index} className="d-flex justify-content-between mb-2">
                                 <div className="mr-2">
                                     <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Name"
-                                        name="title"
-                                        value={paycheck.title}
-                                        onChange={(e) => handlePaycheckChange(index, e)}
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Name"
+                                    name="title"
+                                    value={paycheck.title}
+                                    onChange={(e) => handlePaycheckChange(index, e)}
                                     />
                                 </div>
                                 <div className="mr-2">
                                     <input
-                                        type="number"
-                                        className="form-control"
-                                        placeholder="Amount"
-                                        name="amount"
-                                        value={paycheck.amount}
-                                        onChange={(e) => handlePaycheckChange(index, e)}
+                                    type="number"
+                                    className="form-control"
+                                    placeholder="Amount"
+                                    name="amount"
+                                    value={paycheck.amount}
+                                    onChange={(e) => handlePaycheckChange(index, e)}
                                     />
                                 </div>
                                 <div className="mr-2">
                                     <input
-                                        type="date"
-                                        className="form-control"
-                                        placeholder="Date"
-                                        name="trans_date"
-                                        value={paycheck.trans_date}
-                                        onChange={(e) => handlePaycheckChange(index, e)}
+                                    type="date"
+                                    className="form-control"
+                                    placeholder="Date"
+                                    name="trans_date"
+                                    value={paycheck.trans_date}
+                                    onChange={(e) => handlePaycheckChange(index, e)}
                                     />
                                 </div>
                                 <button
@@ -147,7 +146,7 @@ export default function Budget(props) {
                         ))}
                         <button
                             type="button"
-                            className="btn btn-secondary mt-2"
+                            className="btn btn-primary mt-2"
                             onClick={handleAddPaycheck}
                         >
                             Add Paycheck
@@ -155,74 +154,80 @@ export default function Budget(props) {
                     </div>
                     <div className="form-group bills">
                         <label>Bills:</label>
-                        {bills.map((bill, index) => (
-                            <div key={index} className="d-flex justify-content-between">
-                                <div className="mr-2">
-                                    <input
+                            {bills.map((bill, index) => (
+                                <div key={index} className="d-flex justify-content-between mb-2">
+                                    <div className="mr-2">
+                                        <input
                                         type="text"
                                         className="form-control"
                                         placeholder="Name"
                                         name="title"
                                         value={bill.title}
                                         onChange={(e) => handleBillChange(index, e)}
-                                    />
-                                </div>
-                                <div className="mr-2">
-                                    <input
+                                        />
+                                    </div>
+                                    <div className="mr-2">
+                                        <input
                                         type="number"
                                         className="form-control"
                                         placeholder="Amount"
                                         name="amount"
                                         value={bill.amount}
                                         onChange={(e) => handleBillChange(index, e)}
-                                    />
-                                </div>
-                                <div className="mr-2">
-                                    <input
+                                        />
+                                    </div>
+                                    <div className="mr-2">
+                                        <input
                                         type="date"
                                         className="form-control"
                                         placeholder="Due Date"
                                         name="trans_date"
                                         value={bill.trans_date}
                                         onChange={(e) => handleBillChange(index, e)}
-                                    />
+                                        />
+                                    </div>
+                                    <button
+                                        type="button"
+                                        className="btn btn-danger"
+                                        onClick={() => handleRemoveBill(index)}
+                                    >
+                                        Remove
+                                    </button>
                                 </div>
-                                <button
-                                    type="button"
-                                    className="btn btn-danger"
-                                    onClick={() => handleRemoveBill(index)}
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                        ))}
-                        <button
-                            type="button"
-                            className="btn btn-secondary mt-2"
-                            onClick={handleAddBill}
-                        >
-                            Add Bill
-                        </button>
+                            ))}
+                            <button
+                                type="button"
+                                className="btn btn-primary mt-2"
+                                onClick={handleAddBill}
+                            >
+                                Add Bill
+                            </button>
                     </div>
+                </div>
+                <form onSubmit={handleSubmit}>
                     <div className="budget-submit">
-                        <button type="submit" className="btn btn-primary">
+                        <button type="submit" className="btn btn-primary green">
                             Save
                         </button>
                     </div>
                 </form>
-                {paychecks.length > 0 && bills.length > 0 && (
-                    <div className="budget-results mt-3">
-                        <p>Total Income: {paychecks.reduce(
-                            (accumulator, paycheck) => accumulator + Number(paycheck.amount),
-                            0
-                        )}</p>
-                        <p>Total Bills: {bills.reduce(
-                            (accumulator, bill) => accumulator + Number(bill.amount),
-                            0
-                        )}</p>
-                        <p>Left Over: {calculateLeftOver()}</p>
-                    </div>
-                )}
+                <div className="budget-results mt-3 text-center">
+                    {paychecks.length > 0 && bills.length > 0 && (
+                        <div className="card">
+                            <div className="card-body">
+                                <p className="card-text">Total Income: {paychecks.reduce(
+                                    (accumulator, paycheck) => accumulator + Number(paycheck.amount),
+                                    0
+                                )}</p>
+                                <p className="card-text">Total Bills: {bills.reduce(
+                                    (accumulator, bill) => accumulator + Number(bill.amount),
+                                    0
+                                )}</p>
+                                <p className="card-text">Left Over: {calculateLeftOver()}</p>
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );

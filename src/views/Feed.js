@@ -4,7 +4,6 @@ import Calendar from '../components/Calendar';
 import AnimeQuote from '../components/AnimeQuote';
 import JokeQuote from '../components/JokeQuote';
 
-
 export default function Feed(props) {
     const { totalIncome, totalBills, paychecks, bills } = props;
     const chartRef = useRef();
@@ -45,28 +44,31 @@ export default function Feed(props) {
         }
     }, [chartData, chartRef]);
 
-
     return (
-        <>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-6 d-flex align-items-center pt-3 pb-3">
+        <div className="feedcontainer">
+            <div className="row">
+                <div className="col-md-6 d-flex align-items-center pt-3 pb-3 px-5">
+                    <div className="unique-class-name-1">
                         <div className="card text-center col-md-12">
                             <div className="card-body">
-                                <Calendar paychecks={paychecks} bills={bills}/>
+                                <Calendar paychecks={paychecks} bills={bills} />
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-6">
-                        <div className="card text-center col-md-12" >
+                </div>
+                <div className="col-md-6">
+                    <div className="unique-class-name-2">
+                        <div className="card text-center col-md-12">
                             <div className="card-body">
                                 <h5 className="card-title">Budget</h5>
                                 <canvas ref={chartRef}></canvas>
-                                <a href="/budget" className="btn btn-primary" style={{borderColor: "white"}}>Update</a>
+                                <a href="/budget" className="btn btn-primary" style={{ borderColor: "white" }}>Update</a>
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-6">
+                </div>
+                <div className="col-md-6">
+                    <div className="unique-class-name-3">
                         <div className="card text-center">
                             <div className="card-body">
                                 <i className="fa-solid fa-chart-column fa-2x"></i>
@@ -75,7 +77,9 @@ export default function Feed(props) {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-6">
+                </div>
+                <div className="col-md-6">
+                    <div className="unique-class-name-4">
                         <div className="card text-center">
                             <div className="card-body">
                                 <i className="fa-regular fa-calendar-days fa-2x"></i>
@@ -85,7 +89,9 @@ export default function Feed(props) {
                         </div>
                     </div>
                 </div>
+                
+                
             </div>
-        </>
+        </div>
     );
 }

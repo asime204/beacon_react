@@ -30,17 +30,20 @@ export default function Login({ logMeIn }) {
   };
 
   return (
-    <div className='body'>
-      <div>
+    <div className='login-body' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#2c3e50', height: '100vh' }}>
+      <div className='login-form' style={{ width: '400px', padding: '20px', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)', borderRadius: '10px', backgroundColor: '#fff' }}>
+        <h2 style={{ color: '#2c3e50', marginBottom: '20px' }}>Login</h2>
         <form onSubmit={handleSubmit}>
-          <input placeholder= "Username" name="username" />
-          <input placeholder= "Password" name="password" type="password" />
-          <button className="btn btn-success" type="submit">Log In</button>
+          <div style={{ marginBottom: '10px' }}>
+            <input placeholder= "Username" name="username" style={{ display: 'block', width: '100%', padding: '10px', borderRadius: '20px', border: '1px solid #ccc' }} />
+          </div>
+          <div style={{ marginBottom: '10px' }}>
+            <input placeholder= "Password" name="password" type="password" style={{ display: 'block', width: '100%', padding: '10px', borderRadius: '20px', border: '1px solid #ccc' }} />
+          </div>
+          <button className="btn btn-success" type="submit" style={{ width: '100%', padding: '10px', borderRadius: '20px', border: 'none', backgroundColor: '#e6e6fa', color: '#2c3e50', fontWeight: 'bold' }}>Log In</button>
         </form>
+        {loginError && <p style={{ color: 'red', marginTop: '10px' }}>{loginError}</p>}
       </div>
-      
-
-      {loginError && <p>{loginError}</p>}
     </div>
   );
 }

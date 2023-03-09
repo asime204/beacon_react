@@ -19,7 +19,7 @@ export default class Nav extends Component {
                                 ?
                                 <>
                                     <Link className="nav-link" to="/feed" style={{color: 'white'}}>Feed</Link>
-                                    <Link className="nav-link" to="/login" onClick={this.props.logMeOut} style={{color: 'white'}}>Log Out</Link>
+                                    <Link className="nav-link" to="/" onClick={this.props.logMeOut} style={{color: 'white'}}>Log Out</Link>
                                     <p className='nav-link' style={{color: 'white'}}>{this.props.user.username}</p>
                                 </>
                                 :

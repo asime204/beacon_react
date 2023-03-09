@@ -138,3 +138,16 @@
 .homebutton.loaded {
   animation-delay: 1s;
 }
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.login-input {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: none;
+}
