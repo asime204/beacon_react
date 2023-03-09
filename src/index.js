@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 // import { initializeApp } from "firebase/app";
+import './css/index.css'; 
 import App from './App';
 
 // const REACT_APP_FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_API_KEY

@@ -6,6 +6,7 @@ import SignUp from './views/Signup';
 import Login from './views/Login';
 import Feed from './views/Feed';
 import Budget from './views/Budget';
+
 // import CreatePost from './views/CreatePost';
 // import UpdatePost from './views/UpdatePost';
 // import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
@@ -123,19 +124,22 @@ export default function App() {
 
     return (
         <Router>
-            <div>
+            <div style={{ backgroundColor: '#e6e6fa' }}>
                 <Nav user={user} logMeOut={logMeOut} />
                 {showMessage()}
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/budget' element={<Budget user={user} paychecks={paychecks} setPaychecks={setPaychecks} bills={bills} setBills={setBills} setLeftOver={setLeftOver} calculateLeftOver={calculateLeftOver} handleAddPaycheck={handleAddPaycheck} handleAddBill={handleAddBill}/>} />
-                    <Route path='/feed' element={<Feed totalIncome={totalIncome} totalBills={totalBills} />} />
-                    <Route path='/signup' element={<SignUp />} />
-                    <Route path='/login' element={<Login logMeIn={logMeIn}/>} />
-                    {/* <Route path='/posts/:postId' element={<SinglePost user={user}/>} />
-                    <Route path='/posts/update/:postId' element={<UpdatePost user={user}/>} />
-                    <Route path='/posts/create' element={<CreatePost user={user}/>} /> */}
-                </Routes>
+                
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/budget' element={<Budget user={user} paychecks={paychecks} setPaychecks={setPaychecks} bills={bills} setBills={setBills} setLeftOver={setLeftOver} calculateLeftOver={calculateLeftOver} handleAddPaycheck={handleAddPaycheck} handleAddBill={handleAddBill}/>} />
+                        <Route path='/feed' element={<Feed totalIncome={totalIncome} totalBills={totalBills} paychecks={paychecks} bills={bills}/>} />
+                        <Route path='/signup' element={<SignUp />} />
+                        <Route path='/login' element={<Login logMeIn={logMeIn}/>} />
+                        {/* <Route path='/posts/:postId' element={<SinglePost user={user}/>} />
+                        <Route path='/posts/update/:postId' element={<UpdatePost user={user}/>} />
+                        <Route path='/posts/create' element={<CreatePost user={user}/>} /> */}
+                    </Routes>
+                
+                
             </div>
         </Router>
     )
