@@ -9,7 +9,7 @@ function Home(props) {
     setTextLoaded(true);
     setTimeout(() => {
       setButtonsLoaded(true);
-    }, 1000); // fade in buttons after 1 second
+    }, 1000);
   }, []);
 
   return (

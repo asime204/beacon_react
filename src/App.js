@@ -7,9 +7,6 @@ import Login from './views/Login';
 import Feed from './views/Feed';
 import Budget from './views/Budget';
 
-// import CreatePost from './views/CreatePost';
-// import UpdatePost from './views/UpdatePost';
-// import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 
 export default function App() {
@@ -40,22 +37,7 @@ export default function App() {
     const [bills, setBills] = useState([]);
     const [leftOver, setLeftOver] = useState('');
 
-    // const createPopup = async () => {
-    //     const auth = getAuth();
-    //     const provider = new GoogleAuthProvider();
-    //     try {
-    //       const result = await signInWithPopup(auth, provider);
-    //       const credential = GoogleAuthProvider.credentialFromResult(result);
-    //       const google_id = credential.accessToken;
-    //       const user = result.user;
-    //       logMeIn(user);
-    //       redirect("/feed");
-          
-    //     } catch (error) {
-    //       console.error(error);
-    //     }
-    //   };
-
+   
     const handleAddPaycheck = () => {
         const newPaycheck = { title: '', amount: '', trans_date: '' };
         setPaychecks([...paychecks, newPaycheck]);

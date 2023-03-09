@@ -6,19 +6,19 @@ export default class Calendar extends Component {
     const year = today.getFullYear();
     const month = today.getMonth();
 
-    // Get the first day of the month
+    // Gets the first day of the month
     const firstDay = new Date(year, month, 1);
 
-    // Get the number of days in the month
+    // Gets the number of days in the month
     const lastDay = new Date(year, month + 1, 0);
     const numDays = lastDay.getDate();
 
-    // Create an array of objects representing each day in the month
+    // Creates an array of objects representing each day in the month
     const days = [];
     for (let i = 1; i <= numDays; i++) {
       let paycheckDay = false;
       let billDay = false;
-      // Check if a paycheck falls on this day
+      // Checks if a paycheck falls on this day
       this.props.paychecks.forEach((paycheck) => {
         const parts = paycheck.trans_date.split("-");
         const paycheckDate = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
@@ -30,7 +30,7 @@ export default class Calendar extends Component {
           paycheckDay = true;
         }
       });
-      // Check if a bill is due on this day
+      // Checks if a bill is due on this day
       this.props.bills.forEach((bill) => {
         const parts = bill.trans_date.split("-");
         const billDate = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
