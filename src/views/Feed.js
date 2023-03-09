@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import Chart from 'chart.js/auto';
 import Calendar from '../components/Calendar';
 import AnimeQuote from '../components/AnimeQuote';
+import JokeQuote from '../components/JokeQuote';
 
 
 export default function Feed(props) {
@@ -72,7 +73,7 @@ export default function Feed(props) {
                             <div className="card-body">
                                 <i className="fa-solid fa-chart-column fa-2x"></i>
                                 <h5 className="card-title">Quote of the Day</h5>
-                                <AnimeQuote /> {/* Render the AnimeQuote component */}
+                                <AnimeQuote />
                             </div>
                         </div>
                     </div>
@@ -81,8 +82,7 @@ export default function Feed(props) {
                             <div className="card-body">
                                 <i className="fa-regular fa-calendar-days fa-2x"></i>
                                 <h5 className="card-title">Joke of the Day</h5>
-                                <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                <a href="#" className="btn btn-primary">Learn More</a>
+                                <JokeQuote />
                             </div>
                         </div>
                     </div>
